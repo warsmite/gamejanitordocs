@@ -1,0 +1,32 @@
+{{template "head" .}}
+<title>{{.Page.Title}} - Game Janitor Docs</title>
+{{if .Page.Description}}<meta name="description" content="{{.Page.Description}}">{{end}}
+{{if .BaseURL}}<link rel="canonical" href="{{.BaseURL}}{{.Page.Path}}">{{end}}
+{{template "after_head" .}}
+{{range .Categories}}{{template "sidebar_section" .}}{{end}}
+{{template "after_sidebar" .}}
+
+<article class="doc">
+    <nav class="doc-breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/search?q={{.Page.Category}}">{{categoryName .Page.Category}}</a>
+        {{if .Page.Subcategory}}
+        <span class="breadcrumb-sep">/</span>
+        <span>{{.Page.Subcategory}}</span>
+        {{end}}
+    </nav>
+    <div class="doc-header">
+        <span class="doc-category doc-category--{{.Page.Category}}">{{categoryName .Page.Category}}</span>
+        {{if .Page.Tags}}
+        <div class="doc-tags">
+            {{range .Page.Tags}}<span class="tag">{{.}}</span>{{end}}
+        </div>
+        {{end}}
+    </div>
+    <div class="doc-body">
+        {{safeHTML .Page.HTML}}
+    </div>
+</article>
+
+{{template "footer" .}}

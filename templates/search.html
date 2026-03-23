@@ -1,0 +1,46 @@
+{{template "head" .}}
+<title>Search - Game Janitor Docs</title>
+{{template "after_head" .}}
+{{range .Categories}}{{template "sidebar_section" .}}{{end}}
+{{template "after_sidebar" .}}
+
+<div class="search-page">
+    <h1>Search</h1>
+    <form action="/search" method="get">
+        <input
+            type="search"
+            name="q"
+            value="{{.Query}}"
+            placeholder="Search docs..."
+            hx-get="/search"
+            hx-trigger="input changed delay:300ms, search"
+            hx-target="#results"
+            hx-push-url="true"
+            autofocus
+            autocomplete="off"
+        >
+    </form>
+    <div id="results">
+        {{template "search_results" .}}
+    </div>
+</div>
+
+{{template "footer" .}}
+
+{{define "search_results"}}
+{{if .Query}}
+    {{if .Results}}
+    <ul class="results-list">
+        {{range .Results}}
+        <li class="result">
+            <a href="{{.Path}}">{{.Title}}</a>
+            <span class="result-category result-category--{{.Category}}">{{categoryName .Category}}</span>
+            {{if .Snippet}}<p class="result-snippet">{{safeHTML .Snippet}}</p>{{end}}
+        </li>
+        {{end}}
+    </ul>
+    {{else}}
+    <p class="no-results">No results for "{{.Query}}"</p>
+    {{end}}
+{{end}}
+{{end}}
