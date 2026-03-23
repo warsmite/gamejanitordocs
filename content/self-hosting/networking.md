@@ -54,10 +54,19 @@ Every router is different, but the process is the same:
 | Game | Port | Protocol |
 |------|------|----------|
 | Minecraft | 25565 | TCP |
-| Valheim | 2456-2458 | UDP |
+| Valheim | 2456-2457 | UDP |
 | Terraria | 7777 | TCP |
 | Palworld | 8211 | UDP |
 | Factorio | 34197 | UDP |
+| Rust | 28015, 28016-28017 | UDP + TCP |
+| ARK: Survival Evolved | 7777-7778, 27015 | UDP |
+| Counter-Strike 2 | 27015 | TCP + UDP |
+| Project Zomboid | 16261-16262 | UDP |
+| 7 Days to Die | 26900-26902 | TCP + UDP |
+| Satisfactory | 7777, 15000, 15777 | UDP |
+| V Rising | 9876-9877 | UDP |
+| Enshrouded | 15636-15637 | UDP |
+| Don't Starve Together | 10999 | UDP |
 
 ## Step 3: Firewall
 
